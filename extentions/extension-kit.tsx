@@ -13,6 +13,7 @@ import {
   BlockquoteFigure,
   CharacterCount,
   Export,
+  InlineCode,
   CodeBlock,
   Color,
   Details,
@@ -65,6 +66,7 @@ export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
   Document,
   Columns,
   TaskList,
+  InlineCode,
   TaskItem.configure({
     nested: true,
   }),

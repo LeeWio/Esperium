@@ -21,6 +21,14 @@ export const GROUPS: Group[] = [
         shouldBeHidden: editor => editor.isActive('columns'),
         action: editor => editor.chain().focus().setAiImage().run(),
       },
+      {
+        name: 'aiImage',
+        label: 'AI Image',
+        iconName: 'lucide:stars',
+        description: 'Generate an image from text',
+        shouldBeHidden: editor => editor.isActive('columns'),
+        action: editor => editor.chain().focus().setInlineCode().run(),
+      },
     ],
   },
   {
