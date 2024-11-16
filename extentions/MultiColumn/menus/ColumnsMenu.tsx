@@ -7,6 +7,8 @@ import { ColumnLayout } from '../Columns'
 
 import { MenuProps } from '@/components/menus/types'
 import { getRenderContainer } from '@/lib/utils'
+import { CheckboxGroup } from '@nextui-org/react'
+import { MemoButton } from '@/components/menus'
 
 export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
   const getReferenceClientRect = useCallback(() => {
@@ -67,18 +69,33 @@ export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
       }}
       updateDelay={0}
     >
-      nnnnn
-      {/*<Toolbar.Wrapper>*/}
-      {/*  <Toolbar.Button active={isColumnLeft} tooltip="Sidebar left" onClick={onColumnLeft}>*/}
-      {/*    <Icon name="PanelLeft" />*/}
-      {/*  </Toolbar.Button>*/}
-      {/*  <Toolbar.Button active={isColumnTwo} tooltip="Two columns" onClick={onColumnTwo}>*/}
-      {/*    <Icon name="Columns2" />*/}
-      {/*  </Toolbar.Button>*/}
-      {/*  <Toolbar.Button active={isColumnRight} tooltip="Sidebar right" onClick={onColumnRight}>*/}
-      {/*    <Icon name="PanelRight" />*/}
-      {/*  </Toolbar.Button>*/}
-      {/*</Toolbar.Wrapper>*/}
+      <CheckboxGroup
+        aria-label="Text style options"
+        className="gap-1 rounded-md shadow-lg bg-content3 p-1"
+        orientation="horizontal"
+      >
+        <MemoButton
+          aria-label="Sidebar left"
+          icon="lucide:align-horizontal-distribute-start"
+          isSelected={isColumnLeft}
+          value="Sidebar left"
+          onClick={onColumnLeft}
+        />
+        <MemoButton
+          aria-label="Two columns"
+          icon="lucide:align-horizontal-distribute-center"
+          isSelected={isColumnTwo}
+          value="Two columns"
+          onClick={onColumnTwo}
+        />
+        <MemoButton
+          aria-label="Sidebar right"
+          icon="lucide:align-horizontal-distribute-end"
+          isSelected={isColumnRight}
+          value="Sidebar right"
+          onClick={onColumnRight}
+        />
+      </CheckboxGroup>
     </BaseBubbleMenu>
   )
 }
