@@ -1,6 +1,6 @@
 import { Editor, NodeViewContent, NodeViewProps, NodeViewWrapper } from "@tiptap/react";
 import React from "react";
-import { CodeProps } from "@nextui-org/code";
+import { Code, CodeProps } from "@nextui-org/code";
 interface InlineCodeProps {
     editor: Editor;
     getPos: () => number;
@@ -18,7 +18,7 @@ export const InlineCodeView = (props: InlineCodeProps) => {
     const attrs = node.attrs;
     return (
         <NodeViewWrapper>
-             <NodeViewContent className={"text-red-500"}/>
+            <div className = "text-red-500">qqq</div>
         </NodeViewWrapper>
     )
 }
