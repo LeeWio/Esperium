@@ -3,9 +3,10 @@ import { persistReducer, persistStore } from 'redux-persist'
 import logger from 'redux-logger'
 import storage from 'redux-persist/lib/storage'
 import { setupListeners } from '@reduxjs/toolkit/query'
-
+import postReducer from '@/feature/auth/postSlice'
 import authReducer from '@/feature/auth/authSlice'
 import { authApi } from '@/feature/api/authApi'
+import { postApi } from '@/feature/api/postApi'
 
 // Define the persist configuration, which specifies how and what part of the Redux state should be persisted
 const persistConfig = {
@@ -15,12 +16,14 @@ const persistConfig = {
   blacklist: [''],
 }
 // Adding middleware (logger in this case) to monitor actions in the Redux state
-const middleware = [logger, authApi.middleware]
+const middleware = [logger, authApi.middleware, postApi.middleware]
 
 // Combine all reducers, combining different slices of state into one main rootReducer
 const rootReducer = combineReducers({
   auth: authReducer, // The authentication reducer that manages auth state
+  post: postReducer, // The post reducer that manages post state
   [authApi.reducerPath]: authApi.reducer,
+  [postApi.reducerPath]: postApi.reducer,
 })
 
 // Apply the persistReducer function to enable persistence for the root reducer

@@ -11,9 +11,9 @@ import { TiptapCollabProvider, WebSocketStatus } from '@hocuspocus/provider'
 import { userColors, userNames } from '@/lib/constants'
 import { randomElement } from '@/lib/utils'
 import { ExtensionKit } from '@/extentions/extension-kit'
-import { initialContent } from '@/lib/data/initialContent'
 import { Ai } from '@/extentions/Ai'
 import { AiImage, AiWriter } from '@/extentions'
+import { useDraft } from './useDraft'
 
 declare global {
   interface Window {
@@ -34,6 +34,8 @@ export const useBlockEditor = ({
   userId?: string
   userName?: string
 }) => {
+  
+  const draft = useDraft()
   const [collabState, setCollabState] = useState<WebSocketStatus>(
     provider ? WebSocketStatus.Connecting : WebSocketStatus.Disconnected
   )
@@ -48,12 +50,12 @@ export const useBlockEditor = ({
           provider.on('synced', () => {
             setTimeout(() => {
               if (ctx.editor.isEmpty) {
-                ctx.editor.commands.setContent(initialContent)
+                ctx.editor.commands.setContent(draft?.content || "")
               }
             }, 0)
           })
         } else if (ctx.editor.isEmpty) {
-          ctx.editor.commands.setContent(initialContent)
+          ctx.editor.commands.setContent(draft?.content || "")
           ctx.editor.commands.focus('start', { scrollIntoView: true })
         }
       },

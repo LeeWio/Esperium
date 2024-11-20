@@ -76,22 +76,79 @@ export const authApi = createApi({
       // Optimistic update or caching could be added here if needed
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
-          // Wait for the query to be fulfilled and get the response data
+          // wait for the query to be fulfilled and get the response data
           const { data } = await queryFulfilled;
 
-          // Upon successful authentication, store the user information in the Redux state
-          dispatch(setAuthUser(data)); // Store the authenticated user details in the state
-
+          if (data && data.authorization){
+            // upon successful authentication, store the user information in the Redux state
+            dispatch(setAuthUser(data)); // store the authenticated user details in the state
+          } else {
+            throw new Error('Invalid authentication response data');
+          }
           // You can perform other actions here, such as redirecting to the user dashboard
           // router.push('/dashboard'); // Example: redirect to dashboard
 
         } catch (error) {
-          // Handle authentication failure
+          // handle authentication failure
           console.error('Authentication failed:', error);
-          // You can process the error or display an error message here
+          // you can process the error or display an error message here
         }
       },
     }),
+    registerUser: builder.mutation<void, UserAuthPayload>({
+      query: (credentials) => ({
+        url: '/register', // Register API endpoint
+        method: 'POST',
+        body: credentials, // User data required for registration
+      }),
+      transformResponse: (response: ResultResponse) => {
+        if (response.status === 200) {
+          // Registration successful response, no data needs to be returned
+          return; // Returning undefined or any indicator of success
+        } else {
+          // Handle failure response
+          throw new Error(response.message || 'Registration failed');
+        }
+      },
+      transformErrorResponse: (error) => {
+        if (error.status === 400) {
+          // Handle bad request (e.g., invalid input data)
+          return {
+            message: 'Bad request: Invalid input data',
+            status: error.status,
+          };
+        } else if (error.status === 409) {
+          // Handle conflict (e.g., user already exists)
+          return {
+            message: 'Conflict: User already exists',
+            status: error.status,
+          };
+        } else {
+          // Default error message for other cases
+          return {
+            message: 'An error occurred during registration',
+            status: error.status,
+          };
+        }
+      },
+      async onQueryStarted(arg, { queryFulfilled, dispatch }) {
+        try {
+          // Wait for the API request to be completed
+          await queryFulfilled;
+    
+          // After successful registration, perform any subsequent actions like redirecting
+          // If needed, you can update state here
+          // dispatch(setAuthUser(data)); // If user information needs to be stored after registration
+    
+          // Example: Redirecting to the login page or welcome page after successful registration
+          // router.push('/welcome'); // Example: redirect to a welcome page
+        } catch (error) {
+          // Handle registration failure
+          console.error('Registration failed:', error);
+          // Optionally, you can display error messages to the user here
+        }
+      },
+    })
   }),
 });
 
