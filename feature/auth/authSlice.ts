@@ -6,12 +6,18 @@ import { createSlice } from '@reduxjs/toolkit'
  * AuthUser represents the structure of a user's authentication details.
  */
 export type AuthUser = {
-  uid: string
-  username: string
-  email: string
-  authorization: string
-  avatar: string
+  uid: string;             // Unique identifier for the user
+  username: string;        // The username of the user
+  email: string;           // The user's email address
+  authorization: string;   // JWT token used for authentication
+  avatarUrl?: string;      // The URL of the user's avatar (optional)
+  phoneNumber?: string;    // The user's phone number (optional)
+  dateOfBirth?: string;    // The user's date of birth (optional)
+  bio?: string;            // The user's biography or personal description (optional)
+  role?: string;           // The user's role (e.g., 'admin' or 'user') (optional)
 }
+
+
 
 /**
  * AuthState represents the structure of the authentication state, which includes the user's details.
@@ -55,5 +61,7 @@ export const authSlice = createSlice({
     },
   },
 })
+
+export const {setAuthUser, removeAuthUser} = authSlice.actions
 
 export default authSlice.reducer
