@@ -7,19 +7,22 @@ import { useEditor, useEditorState } from '@tiptap/react'
 import Collaboration from '@tiptap/extension-collaboration'
 import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
 import { TiptapCollabProvider, WebSocketStatus } from '@hocuspocus/provider'
-
 import { userColors, userNames } from '@/lib/constants'
 import { randomElement } from '@/lib/utils'
 import { ExtensionKit } from '@/extentions/extension-kit'
 import { Ai } from '@/extentions/Ai'
 import { AiImage, AiWriter } from '@/extentions'
 import { useDraft } from './useDraft'
+import { useAppDispatch } from './store'
+import { updateDraft } from '@/feature/auth/postSlice'
+import debounce from 'lodash/debounce'
 
 declare global {
   interface Window {
     editor: Editor | null
   }
 }
+
 
 export const useBlockEditor = ({
   aiToken,
@@ -34,8 +37,14 @@ export const useBlockEditor = ({
   userId?: string
   userName?: string
 }) => {
-  
+
   const draft = useDraft()
+  const dispatch = useAppDispatch()
+
+  const debouncedUpdateDraft = debounce((content) => {
+    dispatch(updateDraft({ content }))
+  }, 300)
+
   const [collabState, setCollabState] = useState<WebSocketStatus>(
     provider ? WebSocketStatus.Connecting : WebSocketStatus.Disconnected
   )
@@ -59,35 +68,39 @@ export const useBlockEditor = ({
           ctx.editor.commands.focus('start', { scrollIntoView: true })
         }
       },
+      onUpdate: () => {
+        const content = editor.getHTML()
+        debouncedUpdateDraft(content)
+      },
       extensions: [
         ...ExtensionKit({
           provider,
         }),
         provider
           ? Collaboration.configure({
-              document: ydoc,
-            })
+            document: ydoc,
+          })
           : undefined,
         provider
           ? CollaborationCursor.configure({
-              provider,
-              user: {
-                name: randomElement(userNames),
-                color: randomElement(userColors),
-              },
-            })
+            provider,
+            user: {
+              name: randomElement(userNames),
+              color: randomElement(userColors),
+            },
+          })
           : undefined,
         aiToken
           ? AiWriter.configure({
-              authorId: userId,
-              authorName: userName,
-            })
+            authorId: userId,
+            authorName: userName,
+          })
           : undefined,
         aiToken
           ? AiImage.configure({
-              authorId: userId,
-              authorName: userName,
-            })
+            authorId: userId,
+            authorName: userName,
+          })
           : undefined,
         aiToken ? Ai.configure({ token: aiToken }) : undefined,
       ].filter((e): e is AnyExtension => e !== undefined),
