@@ -55,13 +55,12 @@ export const FontFamilyPicker = ({ onChange, value }: FontFamilyPickerProps) => 
       <DropdownTrigger>
         <Button
           disableRipple
-          isIconOnly
           as={Link}
           className={cn({
             'text-primary': currentValue?.value !== 'Inter' && currentValue?.value,
           })}
           color={'default'}
-          endContent={<Icon className="w-2 h-2" icon={'lucide:chevron-down'} />}
+          // endContent={<Icon className="w-2 h-2" icon={'lucide:chevron-down'} />}
           size={'sm'}
           variant="light"
         >

@@ -18,7 +18,7 @@ export const InlineCodeView = (props: InlineCodeProps) => {
     const attrs = node.attrs;
     return (
         <NodeViewWrapper>
-            <div className = "text-red-500">qqq</div>
+            <Code>adf</Code>
         </NodeViewWrapper>
     )
 }

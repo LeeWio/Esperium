@@ -1,5 +1,5 @@
 import { BubbleMenu, Editor } from '@tiptap/react'
-import { CheckboxGroup } from '@nextui-org/react'
+import { CheckboxGroup, Divider } from '@nextui-org/react'
 import { memo } from 'react'
 
 import { useTextmenuContentTypes } from './hooks/useTextmenuContentTypes'
@@ -8,7 +8,6 @@ import { useTextmenuStates } from './hooks/useTextmenuStates'
 import { EditLinkPopover } from './components/EditLinkPopover'
 import { ContentTypePicker } from './components/ContentTypePicker'
 import { FontFamilyPicker } from './components/FontFamilyPicker'
-
 import { useTextmenuCommands } from '@/components/menus/TextMenu/hooks/useTextmenuCommands'
 
 export const MemoButton = memo(TextMenuItem)
@@ -48,18 +47,25 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
             },
           ],
         },
+        duration: 100,
         maxWidth: 'calc(100vw - 16px)',
       }}
       updateDelay={100}
     >
       <CheckboxGroup
         aria-label="Text style options"
-        className="gap-1 rounded-md shadow-lg bg-content1 px-1"
+        className="rounded-md shadow-lg bg-content2 px-1"
         orientation="horizontal"
       >
         <MemoContentTypePicker options={blockOptions} />
 
         <MemoFontFamilyPicker value={states.currentFont || ''} onChange={commands.onSetFont} />
+
+        <Divider
+          orientation="vertical"
+          className='my-auto'
+          style={{ height: '1.5rem' }}
+        />
 
         <MemoButton
           icon="lucide:bold"

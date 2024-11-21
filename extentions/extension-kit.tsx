@@ -10,6 +10,7 @@ import { ImageUpload } from './ImageUpload'
 import { TableOfContentsNode } from './TableOfContentsNode'
 
 import {
+  ColorHighlighter,
   BlockquoteFigure,
   CharacterCount,
   Export,
@@ -64,6 +65,7 @@ const doc = new Y.Doc()
 
 export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
   Document,
+  ColorHighlighter,
   Columns,
   TaskList,
   InlineCode,
