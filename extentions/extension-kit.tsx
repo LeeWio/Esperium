@@ -53,6 +53,7 @@ import {
   emojiSuggestion,
   Columns,
   Column,
+  SmilieReplacer,
   TaskItem,
   TaskList,
   UniqueID,
@@ -65,6 +66,7 @@ const doc = new Y.Doc()
 
 export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
   Document,
+  SmilieReplacer,
   ColorHighlighter,
   Columns,
   TaskList,

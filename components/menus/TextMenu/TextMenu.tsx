@@ -9,10 +9,12 @@ import { EditLinkPopover } from './components/EditLinkPopover'
 import { ContentTypePicker } from './components/ContentTypePicker'
 import { FontFamilyPicker } from './components/FontFamilyPicker'
 import { useTextmenuCommands } from '@/components/menus/TextMenu/hooks/useTextmenuCommands'
+import { MoreOptionPopover } from './components/MoreOptionPopover'
 
 export const MemoButton = memo(TextMenuItem)
 const MemoContentTypePicker = memo(ContentTypePicker)
 const MemoFontFamilyPicker = memo(FontFamilyPicker)
+const MemoMoreOptionPopover = memo(MoreOptionPopover)
 
 export type TextMenuProps = {
   editor: Editor
@@ -54,7 +56,7 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
     >
       <CheckboxGroup
         aria-label="Text style options"
-        className="rounded-md shadow-lg bg-content2 px-1"
+        className="rounded-md bg-content1 shadow-small px-1 py-[2px] px-[10px] outline-2"
         orientation="horizontal"
       >
         <MemoContentTypePicker options={blockOptions} />
@@ -100,6 +102,8 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
         <MemoButton icon="lucide:square-code" value="CodeBlock" onClick={commands.onCodeBlock} />
         {/*TODO bug 未解决*/}
         <EditLinkPopover onSetLink={commands.onLink} />
+
+        <MemoMoreOptionPopover editor={editor}/>
       </CheckboxGroup>
     </BubbleMenu>
   )

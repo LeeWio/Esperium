@@ -5,5 +5,5 @@ const lowlight = createLowlight(all)
 
 export const CodeBlock = CodeBlockLowlight.configure({
   lowlight,
-  defaultLanguage: 'javascript',
+  defaultLanguage: 'swift',
 })
