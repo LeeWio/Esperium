@@ -126,8 +126,8 @@ export const SnippetMenu = ({ editor, appendTo }: MenuProps) => {
         >
           <DropdownItem key={'bordered'}>bordered</DropdownItem>
           <DropdownItem key={'flat'}>flat</DropdownItem>
-          <DropdownItem key="solid">solid</DropdownItem>
-          <DropdownItem key="shadow">shadow</DropdownItem>
+          <DropdownItem key="faded">faded</DropdownItem>
+          <DropdownItem key="underlined">underlined</DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </BaseBubbleMenu>

@@ -1,25 +1,24 @@
-import { NodeViewWrapper } from '@tiptap/react'
+import { NodeViewContent, NodeViewWrapper } from '@tiptap/react'
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
-import { Snippet } from '@nextui-org/react'
+import { Input } from '@nextui-org/react'
 
-interface SnippetViewProps extends NodeViewProps {}
+export const SnippetView: React.FC<NodeViewProps> = ({ node, updateAttributes, editor }) => {
+  const handleValueChange = (value: string) => {
+    updateAttributes({ value })
+  }
 
-export const SnippetView: React.FC<SnippetViewProps> = ({ node, updateAttributes, editor }) => {
   return (
     <NodeViewWrapper>
-      <Snippet
-        classNames={{
-          base: 'nextui w-full',
-        }}
+      <Input
         color={node.attrs.color}
+        isReadOnly={!editor.isEditable}
         radius={node.attrs.radius}
         size={node.attrs.size}
-        symbol="#"
+        value={node.attrs.value || ''}
         variant={node.attrs.variant}
-      >
-        npm install @nextui-org/react
-      </Snippet>
+        onChange={e => handleValueChange(e.target.value)}
+      />
     </NodeViewWrapper>
   )
 }

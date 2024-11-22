@@ -1,12 +1,12 @@
 'use client'
 
 import React from 'react'
-import { Snippet } from '@nextui-org/snippet'
+import { Input } from '@nextui-org/react'
 
 export default function PricingPage() {
   return (
     <>
-      <Snippet>sasd</Snippet>
+      <Input type="email" />
     </>
   )
 }

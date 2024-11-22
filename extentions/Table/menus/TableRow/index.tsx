@@ -48,7 +48,7 @@ export const TableRowMenu = React.memo(({ editor, appendTo }: MenuProps): JSX.El
       }}
       updateDelay={0}
     >
-      <Listbox aria-label="Actions" >
+      <Listbox aria-label="Actions">
         <ListboxItem
           key="Add row before"
           startContent={<Icon fontSize={18} icon="lucide:align-vertical-distribute-start" />}

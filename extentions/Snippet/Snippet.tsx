@@ -28,7 +28,7 @@ export const Snippet = Node.create({
 
   group: 'block',
 
-  content: 'inline',
+  content: 'inline*',
 
   draggable: true,
 
@@ -53,6 +53,11 @@ export const Snippet = Node.create({
         default: 'sm',
         parseHTML: element => element.getAttribute('data-size'),
         renderHTML: attributes => ({ 'data-size': attributes.size }),
+      },
+      value: {
+        default: '', // 默认值
+        parseHTML: element => element.getAttribute('data-value'),
+        renderHTML: attributes => ({ 'data-value': attributes.value }),
       },
     }
   },
