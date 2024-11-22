@@ -10,6 +10,7 @@ import { ImageUpload } from './ImageUpload'
 import { TableOfContentsNode } from './TableOfContentsNode'
 
 import {
+  Snippet,
   ColorHighlighter,
   BlockquoteFigure,
   CharacterCount,
@@ -66,6 +67,7 @@ const doc = new Y.Doc()
 
 export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
   Document,
+  Snippet,
   SmilieReplacer,
   ColorHighlighter,
   Columns,

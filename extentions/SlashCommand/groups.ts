@@ -27,7 +27,7 @@ export const GROUPS: Group[] = [
         iconName: 'lucide:stars',
         description: 'Generate an image from text',
         shouldBeHidden: editor => editor.isActive('columns'),
-        action: editor => editor.chain().focus().setInlineCode().run(),
+        action: editor => editor.chain().focus().setSnippet().run(),
       },
     ],
   },

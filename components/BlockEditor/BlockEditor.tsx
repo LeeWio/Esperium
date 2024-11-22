@@ -16,6 +16,7 @@ import { ContentItemMenu, LinkMenu, TextMenu } from '@/components/menus'
 import { ColumnsMenu } from '@/extentions/MultiColumn/menus'
 import { TableColumnMenu, TableRowMenu } from '@/extentions/Table/menus'
 import ImageBlockMenu from '@/extentions/ImageBlock/components/ImageBlockMenu'
+import { SnippetMenu } from '@/extentions/Snippet/component/SnippetMenu'
 
 interface EditArticleProps {
   aiToken?: string
@@ -78,6 +79,7 @@ export const BlockEditor: React.FC<EditArticleProps> = ({
                   editor={editor}
                 />
                 <ContentItemMenu editor={editor} />
+                <SnippetMenu appendTo={menuContainerRef} editor={editor} />
                 <LinkMenu appendTo={menuContainerRef} editor={editor} />
                 <TextMenu editor={editor} />
                 <ColumnsMenu appendTo={menuContainerRef} editor={editor} />

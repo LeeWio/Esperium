@@ -56,7 +56,7 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
     >
       <CheckboxGroup
         aria-label="Text style options"
-        className="rounded-md bg-content1 shadow-small px-1 py-[2px] px-[10px] outline-2"
+        className="rounded-md bg-content1 shadow-small px-1 outline-2"
         orientation="horizontal"
       >
         <MemoContentTypePicker options={blockOptions} />

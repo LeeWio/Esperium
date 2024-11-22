@@ -1,5 +1,12 @@
 'use client'
 
+import React from 'react'
+import { Snippet } from '@nextui-org/snippet'
+
 export default function PricingPage() {
-  return <></>
+  return (
+    <>
+      <Snippet>sasd</Snippet>
+    </>
+  )
 }
