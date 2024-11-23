@@ -21,7 +21,7 @@ export const RadioGroup = Node.create({
 
   group: 'block',
 
-  content: 'inline*',
+  atom: true,
 
   addAttributes() {
     return {

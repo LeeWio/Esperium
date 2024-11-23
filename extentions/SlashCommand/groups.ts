@@ -45,6 +45,14 @@ export const GROUPS: Group[] = [
         shouldBeHidden: editor => editor.isActive('columns'),
         action: editor => editor.chain().focus().insertRadioGroup().run(),
       },
+      {
+        name: 'Tab',
+        label: 'Tab',
+        iconName: 'lucide:stars',
+        description: 'Tab',
+        shouldBeHidden: editor => editor.isActive('columns'),
+        action: editor => editor.chain().focus().insertTab().run(),
+      },
     ],
   },
   {

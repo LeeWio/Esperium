@@ -1,5 +1,5 @@
 import { Node } from '@tiptap/pm/model'
-import { Editor } from '@tiptap/react'
+import { Editor } from '@tiptap/core'
 import { useCallback, useState } from 'react'
 
 export const useData = () => {
@@ -14,7 +14,7 @@ export const useData = () => {
 
       setCurrentNodePos(data.pos)
     },
-    [setCurrentNodePos, setCurrentNode]
+    [setCurrentNodePos, setCurrentNode],
   )
 
   return {

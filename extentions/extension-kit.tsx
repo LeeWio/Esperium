@@ -36,6 +36,7 @@ import {
   HorizontalRule,
   Import,
   ImageBlock,
+  Tab,
   Link,
   Placeholder,
   Selection,
@@ -68,6 +69,7 @@ interface ExtensionKitProps {
 
 export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
   Document,
+  Tab,
   RadioGroup,
   CheckboxGroup,
   Snippet,

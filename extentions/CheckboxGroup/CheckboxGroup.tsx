@@ -27,6 +27,8 @@ export const CheckboxGroup = Node.create({
 
   content: 'inline*',
 
+  atom: true,
+
   addAttributes() {
     return {
       defaultValue: {

@@ -8,6 +8,14 @@ const useContentItemActions = (
   currentNode: Node | null,
   currentNodePos: number
 ) => {
+  const getHeadingType = useCallback(() => {
+    if (currentNode?.type.name === 'heading') {
+      return `H${currentNode.attrs.level}`
+    }
+
+    return null
+  }, [currentNode, currentNodePos])
+
   const resetTextFormatting = useCallback(() => {
     const chain = editor.chain()
 
@@ -80,6 +88,7 @@ const useContentItemActions = (
   }, [currentNode, currentNodePos, editor])
 
   return {
+    getHeadingType,
     resetTextFormatting,
     duplicateNode,
     copyNodeToClipboard,

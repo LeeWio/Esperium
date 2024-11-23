@@ -61,7 +61,7 @@ export const ContentItemMenu = ({ editor }: ContentItemMenuProps) => {
       }}
       onNodeChange={data.handleNodeChange}
     >
-      <Dropdown>
+      <Dropdown backdrop={'blur'}>
         <DropdownTrigger>
           <Button isIconOnly size={'sm'} variant={'light'}>
             <Icon fontSize={20} icon="lucide:grip-vertical" />
