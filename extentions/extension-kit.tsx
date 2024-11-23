@@ -10,6 +10,7 @@ import { ImageUpload } from './ImageUpload'
 import { TableOfContentsNode } from './TableOfContentsNode'
 
 import {
+  CheckboxGroup,
   Snippet,
   ColorHighlighter,
   BlockquoteFigure,
@@ -67,6 +68,7 @@ const doc = new Y.Doc()
 
 export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
   Document,
+  CheckboxGroup,
   Snippet,
   SmilieReplacer,
   ColorHighlighter,

@@ -29,6 +29,14 @@ export const GROUPS: Group[] = [
         shouldBeHidden: editor => editor.isActive('columns'),
         action: editor => editor.chain().focus().setSnippet().run(),
       },
+      {
+        name: 'checkBoxGroup',
+        label: 'checkBoxGroup',
+        iconName: 'lucide:stars',
+        description: 'checkBoxGroup',
+        shouldBeHidden: editor => editor.isActive('columns'),
+        action: editor => editor.chain().focus().insertCheckboxGroup().run(),
+      },
     ],
   },
   {

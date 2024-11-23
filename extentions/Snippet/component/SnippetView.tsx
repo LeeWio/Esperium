@@ -1,4 +1,4 @@
-import { NodeViewContent, NodeViewWrapper } from '@tiptap/react'
+import { NodeViewWrapper } from '@tiptap/react'
 import React from 'react'
 import { NodeViewProps } from '@tiptap/core'
 import { Input } from '@nextui-org/react'

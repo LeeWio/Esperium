@@ -79,7 +79,7 @@ export const SnippetMenu = ({ editor, appendTo }: MenuProps) => {
         plugins: [sticky],
         sticky: 'popper',
       }}
-      updateDelay={0}
+      updateDelay={10}
     >
       <Dropdown size={'sm'}>
         <DropdownTrigger>

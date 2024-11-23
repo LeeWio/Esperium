@@ -17,6 +17,7 @@ import { ColumnsMenu } from '@/extentions/MultiColumn/menus'
 import { TableColumnMenu, TableRowMenu } from '@/extentions/Table/menus'
 import ImageBlockMenu from '@/extentions/ImageBlock/components/ImageBlockMenu'
 import { SnippetMenu } from '@/extentions/Snippet/component/SnippetMenu'
+import { CheckboxGroupMenu } from '@/extentions/CheckboxGroupNode/component/CheckboxGroupMenu'
 
 interface EditArticleProps {
   aiToken?: string
@@ -29,12 +30,12 @@ interface EditArticleProps {
 }
 
 export const BlockEditor: React.FC<EditArticleProps> = ({
-  aiToken,
-  ydoc,
-  provider,
-  isOpen,
-  onOpenChange,
-}) => {
+                                                          aiToken,
+                                                          ydoc,
+                                                          provider,
+                                                          isOpen,
+                                                          onOpenChange,
+                                                        }) => {
   const menuContainerRef = useRef(null)
 
   const leftSidebar = useSidebar()
@@ -80,6 +81,7 @@ export const BlockEditor: React.FC<EditArticleProps> = ({
                 />
                 <ContentItemMenu editor={editor} />
                 <SnippetMenu appendTo={menuContainerRef} editor={editor} />
+                <CheckboxGroupMenu appendTo={menuContainerRef} editor={editor} />
                 <LinkMenu appendTo={menuContainerRef} editor={editor} />
                 <TextMenu editor={editor} />
                 <ColumnsMenu appendTo={menuContainerRef} editor={editor} />
