@@ -37,6 +37,14 @@ export const GROUPS: Group[] = [
         shouldBeHidden: editor => editor.isActive('columns'),
         action: editor => editor.chain().focus().insertCheckboxGroup().run(),
       },
+      {
+        name: 'radioGroup',
+        label: 'radioGroup',
+        iconName: 'lucide:stars',
+        description: 'radioGroup',
+        shouldBeHidden: editor => editor.isActive('columns'),
+        action: editor => editor.chain().focus().insertRadioGroup().run(),
+      },
     ],
   },
   {

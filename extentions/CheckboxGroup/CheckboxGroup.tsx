@@ -29,11 +29,6 @@ export const CheckboxGroup = Node.create({
 
   addAttributes() {
     return {
-      // label: {
-      //   default: 'Select options',
-      //   parseHTML: element => element.getAttribute('data-label'),
-      //   renderHTML: attributes => ({ 'data-label': attributes.label }),
-      // },
       defaultValue: {
         default: ['buenos-aires', 'san-francisco'],
         parseHTML: element => JSON.parse(element.getAttribute('data-default-value') || '[]'),
@@ -63,7 +58,6 @@ export const CheckboxGroup = Node.create({
         parseHTML: element => element.getAttribute('data-color'),
         renderHTML: attributes => ({ 'data-color': attributes.color }),
       },
-      // Size attribute (e.g., small, medium, large)
       size: {
         default: 'md',
         parseHTML: element => element.getAttribute('data-size'),

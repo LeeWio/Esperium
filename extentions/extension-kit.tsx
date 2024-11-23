@@ -11,6 +11,7 @@ import { TableOfContentsNode } from './TableOfContentsNode'
 
 import {
   CheckboxGroup,
+  RadioGroup,
   Snippet,
   ColorHighlighter,
   BlockquoteFigure,
@@ -64,10 +65,10 @@ import {
 interface ExtensionKitProps {
   provider?: HocuspocusProvider | null
 }
-const doc = new Y.Doc()
 
 export const ExtensionKit = ({ provider }: ExtensionKitProps) => [
   Document,
+  RadioGroup,
   CheckboxGroup,
   Snippet,
   SmilieReplacer,
