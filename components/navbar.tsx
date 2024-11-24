@@ -33,7 +33,7 @@ import { ModalFooter, ModalHeader } from '@nextui-org/modal'
 import { siteConfig } from '@/config/site'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { TwitterIcon, GithubIcon, DiscordIcon, Logo } from '@/components/icons'
-import { LoginCredentialsType, useAuthenticateUserMutation } from '@/feature/api/authApi'
+import { useAuthenticateUserMutation, UserAuthPayload } from '@/feature/api/authApi'
 
 // extends Omit<InputProps, 'type'> 表示继承 InputProps 但是排除 type 属性
 interface PasswordInputProps extends Omit<InputProps, 'type'> {
@@ -299,7 +299,7 @@ const SignUp: React.FC<authFormProps> = ({ setAuthFormMode }) => {
 const SignIn: React.FC<authFormProps> = ({ setAuthFormMode }) => {
   const [isFormVisible, setIsFormVisible] = React.useState(false)
   const [authenticateUser, { isLoading: isAuthenticateUserLoading }] = useAuthenticateUserMutation()
-  const [authenticateUserState, setAuthenticateUserState] = useState<LoginCredentialsType>({
+  const [authenticateUserState, setAuthenticateUserState] = useState<UserAuthPayload>({
     email: '',
     password: '',
   })
@@ -313,6 +313,9 @@ const SignIn: React.FC<authFormProps> = ({ setAuthFormMode }) => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const auth = await authenticateUser(authenticateUserState).unwrap()
+    if (auth && auth.authorization){
+
+    }
   }
   const variants = {
     visible: { opacity: 1, y: 0 },

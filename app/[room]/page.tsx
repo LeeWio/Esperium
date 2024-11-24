@@ -17,6 +17,7 @@ export default function Page({
   isOpen: boolean
   onOpenChange: () => void
 }) {
+  console.log("room",room)
   const [provider, setProvider] = useState<TiptapCollabProvider | null>(null)
   const [collabToken, setCollabToken] = useState<string | null | undefined>()
   const [aiToken, setAiToken] = useState<string | null | undefined>()

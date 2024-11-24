@@ -14,10 +14,10 @@ export const CheckboxGroupView: React.FC<NodeViewProps> = ({ node, updateAttribu
   return (
     <NodeViewWrapper>
       <CheckboxGroup
-        label={"asdasd"}
         color={node.attrs.color}
         defaultValue={selected}
         isReadOnly={!editor.isEditable}
+        label={'asdasd'}
         orientation={node.attrs.orientation}
         radius={node.attrs.radius}
         size={node.attrs.size}
